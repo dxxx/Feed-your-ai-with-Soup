@@ -22,6 +22,7 @@ feature reference — every `soup` capability, grouped by area.
 | [Config reference](config-reference.md) | Every `soup.yaml` key: type, default, bounds and allowed values — generated from the schema |
 | [Supported models & extras](models.md) | Recommended model families, the VRAM size guide, the pip extras matrix |
 | [Issue difficulty](issue-difficulty.md) | How issues are rated 1-10 and what each level means |
+| [Bot-OS roadmap](botos-roadmap.md) | Fork-specific: phased plan for using Soup as the fine-tuning layer under Bot-OS's local executor rung |
 
 > Per-release notes live on the [GitHub Releases](https://github.com/MakazhanAlpamys/Soup/releases)
 > page; see also the repo-root [CHANGELOG.md](../CHANGELOG.md).
