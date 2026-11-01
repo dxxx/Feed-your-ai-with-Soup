@@ -1,0 +1,29 @@
+# Bot-OS × Soup — training config for botos-v0.1 (Phase 2 of docs/botos-roadmap.md)
+# Hardware: RTX 5080 16 GB. QLoRA on a 7B instruct model.
+# Before training:  soup profile --model Qwen/Qwen2.5-7B-Instruct --gpu rtx5080 --method qlora
+#                   soup advise data/train.jsonl --goal "..." --probe     (stop if PROMPT_ENG / RAG)
+#                   soup train --config soup.yaml --find-lr               (then set training.lr)
+
+base: Qwen/Qwen2.5-7B-Instruct
+task: sft
+
+data:
+  train: ./data/train.canary.jsonl   # from run-phase1.ps1 (canary-inserted copy of train.jsonl)
+  val_split: 0.1                     # Soup carves validation from train; data/test.jsonl stays held out
+  format: chatml                     # rows with a `tools` key auto-load as tool-calling
+  max_length: 4096
+  train_on_responses_only: true      # loss on the assistant answer only, not on the prompt
+
+training:
+  epochs: 2
+  lr: 1.0e-4                         # placeholder; replace with the --find-lr recommendation
+  batch_size: auto
+  eval_steps: 50
+  seed: 42
+  quantization: 4bit
+  lora:
+    r: 32
+    alpha: 64
+    target_modules: auto
+
+output: ./runs/botos-v0.1

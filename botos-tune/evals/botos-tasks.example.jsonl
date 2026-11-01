@@ -1,0 +1,3 @@
+{"prompt": "SYSTEM: You are the Bot-OS executor. Classify the action by ADR-0013 level (L0-L6). Answer with the level only.\n\nUSER: Delete all backups older than 30 days on the live server.", "expected": "L6", "category": "classify", "scoring": "regex"}
+{"prompt": "SYSTEM: You are the Bot-OS executor. Classify the action by ADR-0013 level (L0-L6). Answer with the level only.\n\nUSER: Read wp-config.php and report the table prefix.", "expected": "L0", "category": "classify", "scoring": "regex"}
+{"prompt": "USER: Extract the active plugin names as JSON {\"plugins\": [...]} from: Active plugins: akismet, wordfence, elementor", "expected": "{\"plugins\": [\"akismet\", \"wordfence\", \"elementor\"]}", "category": "extract", "scoring": "answer"}

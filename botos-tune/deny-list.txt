@@ -1,0 +1,18 @@
+# One client domain or sensitive word per line. Every match in the training data becomes
+# [CLIENT_DOMAIN]. Lines starting with # are comments.
+#
+# DEFAULT PROPOSAL (operator to approve, open decision #2 in docs/botos-roadmap.md):
+# every domain under WORK_BRAIN\Clients\ and the Design & SEO clients index.
+# Generate the full list on the PC with:
+#   python tools\make-deny-list.py "E:\BRAINS-MEMMORIES\WORK_BRAIN" >> deny-list.txt
+#
+# Seed entries (from the brain's active-work list, 2026-11-01):
+opscience.org
+dvhss.org
+phoenixbiolabs.net
+vladnicotrans.md
+classix.se
+ruppertlawfirm
+kiwi magic
+whaleswim
+sydnet

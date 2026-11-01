@@ -26,6 +26,7 @@
 | what | path |
 |---|---|
 | this fork of Soup | `dxxx/feed-your-ai-with-soup` (branch `ccr-768bd8fd-y0v6ms`) |
+| the kit (scripts, configs, card) | [`botos-tune/`](../botos-tune/README.md) in this fork — start at its README ("RESUME HERE") |
 | Soup install on RYZEN9 | `E:\Local-AI\soup\` (venv, Python 3.13.7 — use `python`, not the Store `python3` stub) |
 | build folder (datasets, configs, runs) | `E:\Local-AI\botos-tune\` |
 | models | `E:\Local-AI\models\` (shared with the eval kit) |
@@ -249,3 +250,4 @@ the orchestrator can ask "does this fit / what would the run be" without executi
 | date | phase | result |
 |---|---|---|
 | 2026-11-01 | — | Roadmap written. Eval kit still not run. |
+| 2026-11-01 | 1 (prep) | Kit `botos-tune/` written and tested in the cloud: converter (`botos2jsonl.py`, 5 source adapters, scrubber, rejected-split), `make-deny-list.py`, `class-counts.py`, `make-eval-tasks.py`, `install-soup.ps1`, `run-phase1.ps1`, `soup.yaml` (schema-validated, Soup v0.77.1), `BASELINE.md` template, `CARD.md`, `evals/`. Converter on real Claude Code transcripts: `soup data validate` 100 % valid; fixture leak check 0; pytest + ruff clean. Nothing run on the PC yet; Phase 0 still open. |
