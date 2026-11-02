@@ -27,6 +27,7 @@
 |---|---|
 | this fork of Soup | `dxxx/feed-your-ai-with-soup` (branch `ccr-768bd8fd-y0v6ms`) |
 | the kit (scripts, configs, card) | [`botos-tune/`](../botos-tune/README.md) in this fork — start at its README ("RESUME HERE") |
+| harvest standard (all boxes → one bundle format) | [`botos-tune/HARVEST-STANDARD.md`](../botos-tune/HARVEST-STANDARD.md) (KHS-1) + [`boxes.yaml`](../botos-tune/boxes.yaml) + `tools/harvest-box.py` — this is how Phase 1's sources arrive from every box, not just RYZEN9 |
 | Soup install on RYZEN9 | `E:\Local-AI\soup\` (venv, Python 3.13.7 — use `python`, not the Store `python3` stub) |
 | build folder (datasets, configs, runs) | `E:\Local-AI\botos-tune\` |
 | models | `E:\Local-AI\models\` (shared with the eval kit) |

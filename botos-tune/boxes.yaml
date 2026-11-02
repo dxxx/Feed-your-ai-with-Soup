@@ -1,0 +1,94 @@
+# Bot-OS box registry for the Knowledge Harvest Standard (KHS-1). See HARVEST-STANDARD.md §9.
+# A box that is not here does not harvest. Paths are the box's own view (Windows or POSIX).
+# `site` ids follow the gotcha sink (s-0dc1 = ZENBOOK). Unknown ids are placeholders: fix them.
+
+defaults:
+  include:          # relative to root, and to every projects/<name>/ (episodic/semantic/procedural)
+    episodic:   [done, retros, reports, "logs/*.md", decisions, "projects/*/done", "projects/*/reports", "projects/*/logs/*.md", "projects/*/decisions"]
+    semantic:   [vault/hot.md, vault/KEY-FACTS.md, vault/entities, vault/harvested-repos.tsv, "projects/*/vault"]
+    procedural: [agency/gotcha-outbox, retros/OS-LESSONS.md, "skills/*/LESSONS.md", runbooks]
+    telemetry:  [agency/task-classes.md, "logs/usage*.tsv", "logs/heartbeat*"]
+  exclude: [".secrets", "*.key", "*.pem", "*.env", "*.sql", "*.zip", "*.tar", "*.tar.gz", "*.7z", evidence, backups, node_modules, ".git", "*.db", "*.sqlite"]
+  drop_pattern: "(?i)MEDICINA|medical|\\.key[\\\\/]"
+  transcripts_glob: "*.jsonl"
+
+boxes:
+  - site: s-ryz9
+    name: RYZEN9 canonical (dev centre snapshot)
+    tier: canonical
+    status: active
+    root: 'E:\Bot-OS-Development'
+    claude_projects: ['C:\Users\dXXX\.claude\projects\E--Bot-OS-Development']
+    transport: local            # collector lives here
+    cadence: daily
+    notes: "Read copy (no .git). Live board projects\\os\\. Root-level plans/in-progress/done are pre-v4 leftovers — still harvest them once with --full."
+
+  - site: s-ryz9-test
+    name: RYZEN9 Desktop test copy (Ollama L0 rung, ChromeMCP)
+    tier: canonical
+    status: active
+    root: 'C:\Users\dXXX\Desktop\Bot-OS\Bot-OS'
+    claude_projects: ['C:\Users\dXXX\.claude\projects\C--Users-dXXX-Desktop-Bot-OS-Bot-OS']
+    transport: local
+    cadence: daily
+    notes: "Commit locally, never push. This is where CARD.md lives."
+
+  - site: s-pwc
+    name: ProWebCare agency install
+    tier: agency
+    status: active
+    root: 'E:\Malware-Cleanup-Services\Bot-OS'
+    claude_projects: ['C:\Users\dXXX\.claude\projects\E--Malware-Cleanup-Services-Bot-OS']
+    transport: local
+    cadence: weekly
+    exclude_extra: ["projects/*/evidence", "projects/*/backups", "projects/*/.secrets"]
+    notes: "~38 GB of client evidence under projects/* — the allow-list keeps it out; never widen include here. Updated by zip payload, never git."
+
+  - site: s-0dc1
+    name: ZENBOOK (ARM64 laptop) Bot-OS copy
+    tier: laptop
+    status: active
+    root: '~/Desktop/Bot-OS/Bot-OS'
+    claude_projects: ['~/.claude/projects']
+    transport: git-sink         # .secrets/gotcha-sink.env, write-only deploy key "sink s-0dc1"
+    cadence: on-lan
+    notes: "Has the gotcha sink write key. Bot-OS update blocked until GitHub login on the laptop."
+
+  - site: s-phx
+    name: phoenixbiolabs.net client copy
+    tier: client-copy
+    status: active
+    root: 'C:\Users\dXXX\Desktop\CLIENTS - Web & SEO\phoenixbiolabs.net\Bot-OS-main'
+    claude_projects: []
+    transport: local
+    cadence: end-of-engagement
+    notes: "Only copy with the Windows python3 fix. Read-only client, live payments — harvest episodic only."
+
+  - site: s-vnt
+    name: vladnicotrans.md client copy
+    tier: client-copy
+    status: active
+    root: 'C:\Users\dXXX\Desktop\CLIENTS - Web & SEO\vladnicotrans.md\Bot-OS-main'
+    claude_projects: []
+    transport: local
+    cadence: end-of-engagement
+
+  - site: s-op5
+    name: OnePlus 5 Kali NetHunter box
+    tier: phone
+    status: parked
+    root: '/root/Bot-OS'
+    claude_projects: []
+    transport: scp              # no deploy key on the phone
+    cadence: on-lan
+    notes: "Kali chroot /data/local/nhsystem/kali-arm64. No Bot-OS install yet — placeholder."
+
+  - site: s-pcl
+    name: pCloud snapshot (P:\BotOS-System, 2026-10-14)
+    tier: snapshot
+    status: parked
+    root: 'P:\BotOS-System'
+    claude_projects: []
+    transport: local
+    cadence: once
+    notes: "Harvest once with --full, then retire. Contains ~/.claude copy — transcripts included."

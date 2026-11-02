@@ -20,7 +20,11 @@ The plan is [`docs/botos-roadmap.md`](../docs/botos-roadmap.md); the Bot-OS card
 | `tools/make-deny-list.py` | prints every client domain in the vault for `deny-list.txt` |
 | `tools/class-counts.py` | rows per class/source; exit 2 if an in-scope class is under the bar (300) |
 | `tools/make-eval-tasks.py` | held-out `test.jsonl` → `soup eval custom` task file (Phase 3) |
-| `tools/test_botos2jsonl.py` | pytest for the converter (`python -m pytest botos-tune/tools -q`) |
+| `tools/test_botos2jsonl.py` | pytest for the converter (`python -m pytest botos-tune/tools -q -o addopts=''`) |
+| `HARVEST-STANDARD.md` | **KHS-1**: how every Bot-OS box emits one scrubbed harvest bundle (episodic / semantic / procedural / transcripts / telemetry) for Work Brain + botos-tune |
+| `boxes.yaml` | registry of all Bot-OS boxes (site id, tier, root, transcript dirs, transport, cadence) — a box not listed does not harvest |
+| `tools/harvest-box.py` | runs on a box: allow-list collect → scrub → `manifest.json` + `SCRUB-REPORT.txt` → `.tar.gz` + receipt; incremental; `--verify` on the collector |
+| `tools/test_harvest_box.py` | pytest for the harvester (registry parser, ship/incremental, leak check, verify, tamper) |
 | `deny-list.txt` | seed deny-list (operator decision #2) |
 | `soup.yaml` | Phase 2 training config, QLoRA Qwen2.5-7B-Instruct |
 | `BASELINE.md` | Phase 0 table to fill |
