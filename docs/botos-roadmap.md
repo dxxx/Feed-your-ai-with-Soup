@@ -235,7 +235,7 @@ the orchestrator can ask "does this fit / what would the run be" without executi
 | date | decision |
 |---|---|
 | 2026-11-01 | Soup is the fine-tuning layer; it does not replace Ollama/llama.cpp as the runtime. |
-| 2026-11-01 | First base = Qwen2.5-7B-Instruct QLoRA, on-PC; no cloud GPU for v0.1. |
+| 2026-11-01 | First base = Qwen2.5-7B-Instruct QLoRA, on-PC; no cloud GPU for v0.1. **Superseded 2026-11-02:** the PC session picked Qwen3.5-4B after a model-pick test ("Test B"); `botos-tune/soup.yaml` still names the 7B and must be updated to match the real run. |
 | 2026-11-01 | Phase 0 (eval kit baseline) runs before any training. |
 | 2026-11-01 | Classes in scope for v0.1: `extract`, `classify`. `draft`/`code`/`tool` later. |
 
@@ -250,4 +250,5 @@ the orchestrator can ask "does this fit / what would the run be" without executi
 | date | phase | result |
 |---|---|---|
 | 2026-11-01 | — | Roadmap written. Eval kit still not run. |
+| 2026-11-02 | 2 → 3 | **botos-v0.1 trained** by the Remote Control session on RYZEN9 (claude.ai/code/session_016WFqe7ycSQ8pRmidMd1Gt6): base **Qwen3.5-4B** (changed from Qwen2.5-7B), QLoRA r=32/α=64, 12 h, adapter `E:\Local-AI\botos-tune\runs\botos-v0.1\adapter\`. Held-out 300 rows (of 1,182): loss 1.54→1.08, ppl 4.69→2.93, token acc 69→76 %. **Gate not passed:** first scoring attached no adapter (loader module-name bug; fixed + assert added); re-score in progress — classify 18/18 and 13/14, but `extract` failing "no JSON object in the answer" on most tasks (base: 80 %). Suspect lost output format or serving/chat-template mismatch. |
 | 2026-11-01 | 1 (prep) | Kit `botos-tune/` written and tested in the cloud: converter (`botos2jsonl.py`, 5 source adapters, scrubber, rejected-split), `make-deny-list.py`, `class-counts.py`, `make-eval-tasks.py`, `install-soup.ps1`, `run-phase1.ps1`, `soup.yaml` (schema-validated, Soup v0.77.1), `BASELINE.md` template, `CARD.md`, `evals/`. Converter on real Claude Code transcripts: `soup data validate` 100 % valid; fixture leak check 0; pytest + ruff clean. Nothing run on the PC yet; Phase 0 still open. |
