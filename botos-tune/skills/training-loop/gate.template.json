@@ -1,0 +1,12 @@
+{
+  "name": "botos-v0.x",
+  "notes": "Frozen at loop start. Paths are dotted keys into the eval-kit summary JSON (botos_eval.py run --out ...).",
+  "budget": {"proxy_steps": 60, "proxy_rows": 500, "max_attempts_per_unit": 3, "gpu_hours": 24},
+  "classes": {
+    "extract":        {"path": "suites.extract.pass_first",                "n_path": "suites.extract.n",                "min": 0.90, "min_delta": 0.10, "min_n": 50},
+    "classify_level": {"path": "suites.classify.action_level.accuracy",   "n_path": "suites.classify.action_level.n",  "min": 0.90, "min_delta": 0.00, "min_n": 18},
+    "classify_fail":  {"path": "suites.classify.failure_class.accuracy",  "n_path": "suites.classify.failure_class.n", "min": 0.90, "min_delta": 0.00, "min_n": 14}
+  },
+  "required_rc": {"adapter_check": 0, "ship": 0, "canary": 0},
+  "diagnose_forbid": ["MAJOR"]
+}

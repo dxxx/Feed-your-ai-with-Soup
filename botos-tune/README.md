@@ -21,6 +21,7 @@ The plan is [`docs/botos-roadmap.md`](../docs/botos-roadmap.md); the Bot-OS card
 | `tools/class-counts.py` | rows per class/source; exit 2 if an in-scope class is under the bar (300) |
 | `tools/make-eval-tasks.py` | held-out `test.jsonl` → `soup eval custom` task file (Phase 3) |
 | `tools/test_botos2jsonl.py` | pytest for the converter (`python -m pytest botos-tune/tools -q -o addopts=''`) |
+| `skills/training-loop/` | **permanent skill**: Karpathy keep/revert loop for every training run — `SKILL.md`, learned `RULES.md`, `gate.template.json`, `loop-check.py` (gate as code: exit 0 KEEP / 2 REVERT / 1 check broken, ledger `attempts.tsv`). Install: `skills\install-skills.ps1 [-BotOS <test copy>]` |
 | `HARVEST-STANDARD.md` | **KHS-1**: how every Bot-OS box emits one scrubbed harvest bundle (episodic / semantic / procedural / transcripts / telemetry) for Work Brain + botos-tune |
 | `boxes.yaml` | registry of all Bot-OS boxes (site id, tier, root, transcript dirs, transport, cadence) — a box not listed does not harvest |
 | `tools/harvest-box.py` | runs on a box: allow-list collect → scrub → `manifest.json` + `SCRUB-REPORT.txt` → `.tar.gz` + receipt; incremental; `--verify` on the collector |
